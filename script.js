@@ -74,6 +74,13 @@ screen.setAttribute("class","fa fa-arrows-alt");
 screen.setAttribute("onclick","toggleFullScreen(document.getElementById('video'))");
 
 
+var chat = document.createElement('img');
+chat.setAttribute("src","chat.png");
+
+
+
+
+
 
 playPause.append(screen);
 
@@ -98,6 +105,7 @@ video.appendChild(source);
 container.appendChild(buttons);
 container.prepend(seek);
 container.prepend(video);
+document.body.appendChild(chat);
 document.body.appendChild(container);
 
 /*************************************************************/

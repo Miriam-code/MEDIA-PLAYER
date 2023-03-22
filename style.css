@@ -12,6 +12,13 @@ video {
     margin-top: 2%;
 }
 
+img {
+  position: absolute;
+  right: 0;
+  top: 1px;
+}
+
+
 .container {
     width: 500px; 
     height: 500px;
