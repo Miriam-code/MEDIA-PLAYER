@@ -68,7 +68,7 @@ transform: translateY(0);
 .seek {
     position: absolute;
     width: 100%;
-    padding: 0 40px 0 20px;
+    padding: 10px 40px 0 20px;
 }
 
 .seek input {
@@ -80,19 +80,21 @@ transform: translateY(0);
     display: flex;
     justify-content: space-between;
     width: 100%;
-    bottom: 15%;
+    bottom: 10%;
     padding: 0 20px;
+    font-size: 20px;
 }
 
 .left {
-    display: flex;
-    justify-content: space-between;
-    width: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .volume {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 #videoSeeker, .range {
@@ -102,7 +104,9 @@ transform: translateY(0);
     opacity: 0.7;
     transition: opacity .2s;
 }
-
+.range {
+  width: 90px;
+}
 
 #videoSeeker::-webkit-slider-thumb,
 .range::-webkit-slider-thumb{
@@ -120,7 +124,7 @@ transform: translateY(0);
 }
 
 
-.playPause {
+.fullscreen {
     display: flex;
     cursor: pointer;
     width: 50%;
@@ -131,6 +135,21 @@ transform: translateY(0);
     cursor: pointer;
     margin-left: 20px;
 }
+
+.ward {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 50%;
+  gap: 10px;
+}
+.ward .fa-play ,
+.ward .fa-pause {
+
+  font-size: 30px;
+
+}
+
 
 
 /**********netflix*****************/

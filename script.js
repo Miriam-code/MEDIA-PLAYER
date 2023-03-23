@@ -35,8 +35,8 @@ left.setAttribute("class","left");
 var volume = document.createElement("div");
 volume.setAttribute("class","volume");
 
-var playPause =  document.createElement("div");
-playPause.setAttribute("class","playPause");
+var fullscreen =  document.createElement("div");
+fullscreen.setAttribute("class","fullscreen");
 
 var buttonPlay = document.createElement("i");
 buttonPlay.setAttribute("class","fa fa-play");
@@ -47,13 +47,20 @@ buttonPause.setAttribute("class","fa fa-pause");
 buttonPause.style.display="none"
 buttonPause.setAttribute("onclick","pause_vid()");
 
-var stopp = document.createElement("div");
-stopp.setAttribute("class","stop");
-
 var buttonReplay = document.createElement("i");
-buttonReplay.setAttribute("class","fa fa-stop");
+buttonReplay.setAttribute("class","fa fa-repeat");
 buttonReplay.setAttribute("onclick","stop_vid()");
 
+var buttonBack = document.createElement("i");
+buttonBack.setAttribute("class","fa fa-backward");
+buttonBack.setAttribute("onclick","skipBackward()");
+
+var buttonFor = document.createElement("i");
+buttonFor.setAttribute("class","fa fa-forward");
+buttonFor.setAttribute("onclick","skipFor()");
+
+var ward = document.createElement("div");
+ward.setAttribute("class","ward")
 
 var voldown = document.createElement("i");
 voldown.setAttribute("class","fa fa-volume-down");
@@ -68,33 +75,33 @@ range.setAttribute("onchange","change_vol()")
 var volup = document.createElement("i");
 volup.setAttribute("class","fa fa-volume-up");
 
-
 var screen = document.createElement('i');
 screen.setAttribute("class","fa fa-arrows-alt");
-screen.setAttribute("onclick","toggleFullScreen(document.getElementById('video'))");
+screen.setAttribute("onclick","toggleFullScreen(player)");
 
 var chat = document.createElement('img');
 chat.setAttribute("src","chat.png");
-
 
 var fileInput = document.createElement('input');
 fileInput.setAttribute("type", "file");
 fileInput.setAttribute("id","videoFile");
 fileInput.setAttribute("accept", "video/*");
 
-playPause.append(screen);
-
 volume.appendChild(voldown);
 volume.appendChild(range);
 volume.appendChild(volup);
 
-stopp.appendChild(buttonReplay);
-left.appendChild(stopp);
+ward.appendChild(buttonBack);
+ward.appendChild(buttonPlay);
+ward.appendChild(buttonPause);
+ward.appendChild(buttonFor);
 
-playPause.appendChild(buttonPlay);
-playPause.appendChild(buttonPause);
+fullscreen.append(screen);
+fullscreen.appendChild(buttonReplay);
 
-left.prepend(playPause);
+
+left.appendChild(ward);
+left.prepend(fullscreen);
 
 buttons.appendChild(left);
 buttons.appendChild(volume);
@@ -111,7 +118,7 @@ document.body.appendChild(fileInput);
 
 /*************************************************************/
 
-document.addEventListener('DOMContentLoaded', function() {startPlayer()}, false);
+
 
 let player  = document.getElementById("video");
 
@@ -151,6 +158,7 @@ function change_vol(){
 const seek_slider = document.getElementById('videoSeeker');
 
 function seekUpdate() {
+
     let seekPosition = 0;
 
     if (!isNaN(player.duration)) {
@@ -162,6 +170,7 @@ function seekUpdate() {
 }
 
 function seekTo() {
+
     let seekTo = player.duration * (seek_slider.value/100)
     player.currentTime = seekTo;
 }
@@ -173,6 +182,22 @@ function toggleFullScreen(player) {
       document.exitFullscreen();
     }
 }
+
+function skipBackward() {
+
+    player.currentTime -= 5;
+
+}
+  
+function skipFor() {
+
+    player.currentTime += 5;
+
+}
+    
+
+
+
 
 
 
