@@ -73,14 +73,14 @@ var screen = document.createElement('i');
 screen.setAttribute("class","fa fa-arrows-alt");
 screen.setAttribute("onclick","toggleFullScreen(document.getElementById('video'))");
 
-
 var chat = document.createElement('img');
 chat.setAttribute("src","chat.png");
 
 
-
-
-
+var fileInput = document.createElement('input');
+fileInput.setAttribute("type", "file");
+fileInput.setAttribute("id","videoFile");
+fileInput.setAttribute("accept", "video/*");
 
 playPause.append(screen);
 
@@ -107,6 +107,7 @@ container.prepend(seek);
 container.prepend(video);
 document.body.appendChild(chat);
 document.body.appendChild(container);
+document.body.appendChild(fileInput);
 
 /*************************************************************/
 
@@ -114,10 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {startPlayer()}, false)
 
 let player  = document.getElementById("video");
 
-function startPlayer() {
-}
+fileInput.addEventListener('change', function() {
+    var file = this.files[0];
+    var fileURL = URL.createObjectURL(file);
+    player.src = fileURL;
+});
 
 function play_vid() {
+
     player.play();
     let x = setInterval(() => {
         seekUpdate()
@@ -167,4 +172,9 @@ function toggleFullScreen(player) {
     } else {
       document.exitFullscreen();
     }
-  }
+}
+
+
+
+
+
